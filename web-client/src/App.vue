@@ -1,31 +1,37 @@
 <template>
-  <n-grid x-gap="12" :cols="4">
-    <n-gi>
-      <div class="light-green" />
-    </n-gi>
-    <n-gi>
-      <div class="green" />
-    </n-gi>
-    <n-gi>
-      <div class="light-green" />
-    </n-gi>
-    <n-gi>
-      <div class="green" />
-    </n-gi>
-  </n-grid>
+  <q-layout>
+    <q-page-container class="page-wrapper">
+      <q-page padding class="q-pt-none">
+        <div class="row q-mb-md">
+          <div class="col">
+            <ServiceStatusToolbar />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <CryptoPriceSection />
+          </div>
+        </div>
+      </q-page>
+    </q-page-container>
+  </q-layout>
 </template>
 
 <script setup>
-import { NGrid, NGi } from "naive-ui";
+import { defineComponent } from "vue";
+import ServiceStatusToolbar from "./components/ServiceStatusToolbar.vue";
+import CryptoPriceSection from "./components/CryptoPriceSection.vue";
+
+defineComponent({
+  ServiceStatusToolbar,
+  CryptoPriceSection,
+});
 </script>
 
 <style scoped>
-.light-green {
-  height: 108px;
-  background-color: rgba(0, 128, 0, 0.12);
-}
-.green {
-  height: 108px;
-  background-color: rgba(0, 128, 0, 0.24);
+.page-wrapper {
+  max-width: 992px;
+  margin-left: auto;
+  margin-right: auto;
 }
 </style>

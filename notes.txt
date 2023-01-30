@@ -1,1 +1,5 @@
-Agenda for design: Utilize the splitter component of quasar.
+Agenda for design:
+- Utilize the splitter component of quasar /
+- Put backend logo in each section and health status indicators
+- Put an animated pop up in section if a one service is down
+- The authentication should be a github and twitter buttons

@@ -22,9 +22,7 @@
             <template v-slot:after>
               <q-splitter horizontal v-model="cryptoMoviesSplitter">
                 <template v-slot:before>
-                  <div class="q-pa-md">
-                    <div class="text-h4 q-mb-md text-weight-bold">Crypto</div>
-                  </div>
+                  <CryptoSection />
                 </template>
 
                 <template v-slot:after>
@@ -71,8 +69,9 @@
 import { defineComponent, ref } from "vue";
 import PostsSection from "./components/PotsSection.vue";
 import NewsSection from "./components/NewsSection.vue";
+import CryptoSection from "./components/CryptoSection.vue";
 
-defineComponent({ PostsSection, NewsSection });
+defineComponent({ PostsSection, NewsSection, CryptoSection });
 
 const mainSplitter = ref(40);
 const postsNewsSplitter = ref(50);

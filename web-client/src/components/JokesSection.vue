@@ -2,7 +2,7 @@
   <div class="q-pa-md">
     <div class="row justify-between items-center content-center">
       <div class="text-h6 q-mb-md text-weight-regular">
-        News <span class="q-ml-sm" v-if="loading">Loading...</span>
+        Jokes <span class="q-ml-sm" v-if="loading">Loading...</span>
         <q-badge color="negative" v-if="isServerDown && !loading"
           >Server is down</q-badge
         >
@@ -11,18 +11,7 @@
     </div>
     <template v-for="(row, index) in rows" :key="index">
       <q-card bordered flat class="my-card q-mb-sm">
-        <img :src="row.media" />
-
-        <q-card-section>
-          <div class="text-h6">
-            {{ row.title }}
-          </div>
-          <div class="text-subtitle2">by {{ row.clean_url || "Unknown" }}</div>
-        </q-card-section>
-
-        <q-card-section class="q-pt-none">
-          {{ row.summary }}
-        </q-card-section>
+        <q-card-section> {{ row.joke }}</q-card-section>
       </q-card>
     </template>
   </div>
@@ -30,7 +19,7 @@
 
 <script>
 export default {
-  name: "NewsSection",
+  name: "JokesSection",
 };
 </script>
 
@@ -45,7 +34,7 @@ const loading = ref(false);
 const getData = async () => {
   loading.value = true;
   try {
-    const { data } = await axios.get("http://127.0.0.1:8081/api/news?");
+    const { data } = await axios.get("http://127.0.0.1:8082/api/jokes");
     rows.value = data;
     isServerDown.value = false;
   } catch (error) {
@@ -56,7 +45,7 @@ const getData = async () => {
 };
 
 const generateData = async () => {
-  await axios.post("http://127.0.0.1:8081/api/news/generate");
+  await axios.post("http://127.0.0.1:8082/api/jokes/generate");
 };
 
 onMounted(async () => {
